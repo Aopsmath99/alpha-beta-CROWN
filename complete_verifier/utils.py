@@ -26,6 +26,7 @@ import torch.nn.functional as F
 
 from auto_LiRPA import BoundedTensor
 from auto_LiRPA.perturbations import PerturbationLpNorm
+from auto_LiRPA.metrics import MetricsCollector
 
 @dataclass
 class Timer:
@@ -137,6 +138,26 @@ class Logger:
             print(f'Result: {verified_status} '
                   f'in {self.status_per_sample_list[-1][1]:.4f} seconds')
 
+        _mc = MetricsCollector.get()
+        if _mc.enabled:
+            instance_time = time.time() - self.start_time
+            bab_domains = sum(
+                r[2] for r in self.bab_ret if r[0] == index
+            )
+            bab_time = sum(
+                r[3] for r in self.bab_ret if r[0] == index
+            )
+            bab_lbs = [r[1] for r in self.bab_ret if r[0] == index]
+            global_lb = float(min(bab_lbs)) if bab_lbs else None
+            _mc.record_instance(
+                index=index,
+                status=verified_status,
+                total_time=instance_time,
+                bab_domains_visited=bab_domains,
+                bab_time=bab_time,
+                global_lb=global_lb,
+            )
+
     def finish(self):
         if self.run_mode != 'single_vnnlib':
             # Finished all examples.
@@ -220,6 +241,8 @@ class Logger:
                 with open(arguments.Config['general']['output_file'], 'wb') as f:
                     pickle.dump(arguments.Globals['out'], f)
                 print(f"Result dict saved to {arguments.Config['general']['output_file']}.")
+
+        MetricsCollector.get().dump()
 
     def _save(self):
         with open(self.save_path, 'wb') as f:
