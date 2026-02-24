@@ -16,7 +16,7 @@ Usage examples:
 
   # Limit to 10 instances for quick testing
   python benchmark.py --config exp_configs/tutorial_examples/cifar_resnet_2b.yaml \\
-      --output results/quick/ --num-instances 10
+      --output results/quick/ --num-instances 100
 
   # Sweep over a single parameter
   python benchmark.py --config exp_configs/tutorial_examples/cifar_resnet_2b.yaml \\

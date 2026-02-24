@@ -1,0 +1,36 @@
+attack:
+  pgd_restarts: 30
+  pgd_steps: 100
+bab:
+  branching:
+    candidates: 3
+    method: kfsb
+    reduceop: min
+  timeout: 120
+data:
+  dataset: CIFAR
+  end: 20
+  mean:
+  - 0.4914
+  - 0.4822
+  - 0.4465
+  start: 0
+  std:
+  - 0.2471
+  - 0.2435
+  - 0.2616
+model:
+  name: resnet2b
+  path: models/cifar10_resnet/resnet2b.pth
+solver:
+  alpha-crown:
+    iteration: 20
+    lr_alpha: 0.01
+  batch_size: 2048
+  beta-crown:
+    iteration: 20
+    lr_alpha: 0.01
+    lr_beta: 0.05
+specification:
+  epsilon: 0.00784313725490196
+  norm: .inf

@@ -1,0 +1,1818 @@
+[
+  {
+    "config_idx": 0,
+    "description": "lr_alpha=0.01",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.01"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 13.09661826133728,
+      "mean_time_verified": 12.067579283433801,
+      "mean_time_falsified": 0.10126229694911412,
+      "total_bab_domains": 521804,
+      "alpha_crown_total_time": 76.9803557395935,
+      "alpha_crown_mean_iterations": 86.18181818181819,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 85.2480947971344,
+      "beta_crown_call_count": 183,
+      "beta_crown_mean_iterations": 19.169398907103826
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.625244140625,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 10.41200876235962,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.20398473739624023,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 50.2303192615509,
+        "bab_domains_visited": 94088,
+        "bab_time_seconds": 42.56060433387756,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 56.72220182418823,
+        "bab_domains_visited": 114344,
+        "bab_time_seconds": 48.714223861694336,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 2.5120320320129395,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 31.02526021003723,
+        "bab_domains_visited": 46174,
+        "bab_time_seconds": 23.46931529045105,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.46552014350891113,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.00948476791381836,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.009039640426635742,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 7.1791157722473145,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.10500049591064453,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 1.71315598487854,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 9.059389114379883,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.13980340957641602,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.010094881057739258,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.44003820419311523,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 121.55777263641357,
+        "bab_domains_visited": 257340,
+        "bab_time_seconds": 111.34582757949829,
+        "global_lower_bound": -0.31582093238830566
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5496740341186523,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4272191524505615,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 21.159226655960083,
+        "bab_domains_visited": 8694,
+        "bab_time_seconds": 10.976801872253418,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.03066396713256836,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6308920383453369,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 11.674049377441406,
+        "bab_domains_visited": 780,
+        "bab_time_seconds": 2.4081802368164062,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4945206642150879,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011556386947631836,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4542245864868164,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.012752294540405273,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 194
+  },
+  {
+    "config_idx": 1,
+    "description": "lr_alpha=0.05",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.05"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.299551944732666,
+      "mean_time_verified": 8.04859575103311,
+      "mean_time_falsified": 0.0737311499459403,
+      "total_bab_domains": 377302,
+      "alpha_crown_total_time": 66.42866134643555,
+      "alpha_crown_mean_iterations": 82.72727272727273,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 66.3115622997284,
+      "beta_crown_call_count": 146,
+      "beta_crown_mean_iterations": 18.958904109589042
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.42826294898986816,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 9.015092849731445,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.1912684440612793,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 30.3242290019989,
+        "bab_domains_visited": 39758,
+        "bab_time_seconds": 22.722963333129883,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 27.255194902420044,
+        "bab_domains_visited": 39906,
+        "bab_time_seconds": 20.243749618530273,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.9325428009033203,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 21.17507266998291,
+        "bab_domains_visited": 20018,
+        "bab_time_seconds": 13.73537826538086,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4642829895019531,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011874914169311523,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.00952005386352539,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 7.754690647125244,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.12060737609863281,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6813054084777832,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 7.061143398284912,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.12189650535583496,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.009812355041503906,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4256746768951416,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 120.1465528011322,
+        "bab_domains_visited": 272030,
+        "bab_time_seconds": 113.25714635848999,
+        "global_lower_bound": -0.2835148572921753
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 1.190396785736084,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5726156234741211,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 16.917484045028687,
+        "bab_domains_visited": 4526,
+        "bab_time_seconds": 7.571538925170898,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.02688884735107422,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5470771789550781,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 11.540506601333618,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 2.0563316345214844,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.49487972259521484,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.012191057205200195,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4739384651184082,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.017567873001098633,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 157
+  },
+  {
+    "config_idx": 2,
+    "description": "lr_alpha=0.1",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.1"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.567164707183839,
+      "mean_time_verified": 8.347541051752428,
+      "mean_time_falsified": 0.07409521511622838,
+      "total_bab_domains": 377138,
+      "alpha_crown_total_time": 71.1279628276825,
+      "alpha_crown_mean_iterations": 82.45454545454545,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 71.40431809425354,
+      "beta_crown_call_count": 146,
+      "beta_crown_mean_iterations": 18.958904109589042
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.4187753200531006,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 10.813567161560059,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.19756650924682617,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 29.526224613189697,
+        "bab_domains_visited": 39670,
+        "bab_time_seconds": 21.98536205291748,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 30.00642967224121,
+        "bab_domains_visited": 39910,
+        "bab_time_seconds": 22.44351315498352,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.8771224021911621,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 25.72091317176819,
+        "bab_domains_visited": 19986,
+        "bab_time_seconds": 16.37479329109192,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5565831661224365,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.013403892517089844,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.012264013290405273,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 9.398945569992065,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.14986538887023926,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6369969844818115,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 8.056147336959839,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.1614222526550293,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.012009620666503906,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4281480312347412,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 121.75225329399109,
+        "bab_domains_visited": 271982,
+        "bab_time_seconds": 113.3955328464508,
+        "global_lower_bound": -0.283525675535202
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5149743556976318,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.44143128395080566,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 13.6362624168396,
+        "bab_domains_visited": 4526,
+        "bab_time_seconds": 6.45428729057312,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.024165630340576172,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5320785045623779,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 9.863387823104858,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 1.5746080875396729,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.45373034477233887,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.026395082473754883,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4452550411224365,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011652946472167969,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 157
+  },
+  {
+    "config_idx": 3,
+    "description": "lr_alpha=0.2",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.2"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.518384799957275,
+      "mean_time_verified": 8.248824652503519,
+      "mean_time_falsified": 0.06957122257777623,
+      "total_bab_domains": 377184,
+      "alpha_crown_total_time": 64.89902114868164,
+      "alpha_crown_mean_iterations": 82.27272727272727,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 70.81345081329346,
+      "beta_crown_call_count": 146,
+      "beta_crown_mean_iterations": 18.958904109589042
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.4036219120025635,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 7.727020025253296,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.16653895378112793,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 32.091636657714844,
+        "bab_domains_visited": 39710,
+        "bab_time_seconds": 25.350904941558838,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 31.077500104904175,
+        "bab_domains_visited": 39916,
+        "bab_time_seconds": 22.1688129901886,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.7229926586151123,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 25.91844129562378,
+        "bab_domains_visited": 19978,
+        "bab_time_seconds": 16.687159538269043,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5604183673858643,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.009922981262207031,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.010884284973144531,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 8.426475048065186,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.11008810997009277,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5459258556365967,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 7.0188515186309814,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.12526655197143555,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.013581275939941406,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4238455295562744,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 122.24260234832764,
+        "bab_domains_visited": 271990,
+        "bab_time_seconds": 114.48943281173706,
+        "global_lower_bound": -0.28339916467666626
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5074465274810791,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.41339945793151855,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 14.279727935791016,
+        "bab_domains_visited": 4526,
+        "bab_time_seconds": 7.140645503997803,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.024845600128173828,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5348029136657715,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 8.95903754234314,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 1.5201678276062012,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4969031810760498,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011004209518432617,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5255944728851318,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.013138294219970703,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 157
+  },
+  {
+    "config_idx": 4,
+    "description": "lr_alpha=0.25",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.25"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.170613927841186,
+      "mean_time_verified": 7.8520867544062,
+      "mean_time_falsified": 0.0698995930807931,
+      "total_bab_domains": 360854,
+      "alpha_crown_total_time": 67.06743669509888,
+      "alpha_crown_mean_iterations": 82.18181818181819,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 65.20504140853882,
+      "beta_crown_call_count": 144,
+      "beta_crown_mean_iterations": 18.944444444444443
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.38192129135131836,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 7.811770439147949,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.1674046516418457,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 28.76923441886902,
+        "bab_domains_visited": 39744,
+        "bab_time_seconds": 21.142596006393433,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 27.106110334396362,
+        "bab_domains_visited": 39942,
+        "bab_time_seconds": 20.15812611579895,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5925524234771729,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 21.850722312927246,
+        "bab_domains_visited": 19980,
+        "bab_time_seconds": 14.434319734573364,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.46636033058166504,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.017399072647094727,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.008818864822387695,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 7.064636945724487,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.11155509948730469,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5424423217773438,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 7.022548675537109,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.12257838249206543,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.015303850173950195,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.42522358894348145,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 120.29057621955872,
+        "bab_domains_visited": 255596,
+        "bab_time_seconds": 111.35226845741272,
+        "global_lower_bound": -0.28354766964912415
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5039703845977783,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4186677932739258,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 17.124627828598022,
+        "bab_domains_visited": 4528,
+        "bab_time_seconds": 7.774280071258545,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.03809070587158203,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6607232093811035,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 12.1913583278656,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 1.9934515953063965,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4746541976928711,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.01660633087158203,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4598712921142578,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011157035827636719,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 155
+  },
+  {
+    "config_idx": 5,
+    "description": "lr_alpha=0.3",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.3"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.639211072921753,
+      "mean_time_verified": 8.379974182914285,
+      "mean_time_falsified": 0.07599415097917829,
+      "total_bab_domains": 377190,
+      "alpha_crown_total_time": 70.58525109291077,
+      "alpha_crown_mean_iterations": 82.18181818181819,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 69.55416536331177,
+      "beta_crown_call_count": 146,
+      "beta_crown_mean_iterations": 18.958904109589042
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.42335939407348633,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 9.497428178787231,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.18880701065063477,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 32.55953884124756,
+        "bab_domains_visited": 39718,
+        "bab_time_seconds": 23.714943647384644,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 28.505056858062744,
+        "bab_domains_visited": 39922,
+        "bab_time_seconds": 19.56430459022522,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6409437656402588,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 22.840749979019165,
+        "bab_domains_visited": 19978,
+        "bab_time_seconds": 15.114058017730713,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4893465042114258,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.010145187377929688,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.008767127990722656,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 7.505048513412476,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.11099815368652344,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5848779678344727,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 7.509762287139893,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.12102556228637695,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.009682893753051758,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4530155658721924,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 122.98875665664673,
+        "bab_domains_visited": 271986,
+        "bab_time_seconds": 114.92622923851013,
+        "global_lower_bound": -0.2834959924221039
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.603846549987793,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4983711242675781,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 17.581490755081177,
+        "bab_domains_visited": 4522,
+        "bab_time_seconds": 8.86823844909668,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.03254985809326172,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.7256064414978027,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 11.31725788116455,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 1.973546028137207,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5792367458343506,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.0307157039642334,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5679831504821777,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.0167388916015625,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 157
+  },
+  {
+    "config_idx": 6,
+    "description": "lr_alpha=0.4",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.4"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.517530851364135,
+      "mean_time_verified": 8.184401750564575,
+      "mean_time_falsified": 0.07012922423226493,
+      "total_bab_domains": 385404,
+      "alpha_crown_total_time": 70.883056640625,
+      "alpha_crown_mean_iterations": 80.0,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 67.16697669029236,
+      "beta_crown_call_count": 147,
+      "beta_crown_mean_iterations": 18.965986394557824
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.4089162349700928,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 9.062841176986694,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.14828729629516602,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 31.2106511592865,
+        "bab_domains_visited": 39686,
+        "bab_time_seconds": 21.65817165374756,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 28.5432345867157,
+        "bab_domains_visited": 39898,
+        "bab_time_seconds": 20.855769634246826,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6321456432342529,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 25.42380380630493,
+        "bab_domains_visited": 19992,
+        "bab_time_seconds": 15.616098165512085,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5105843544006348,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.009711027145385742,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.0105438232421875,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 7.834095239639282,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.13286352157592773,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.606264591217041,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 9.51082706451416,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.12446355819702148,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.010377883911132812,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.41600561141967773,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 123.31253695487976,
+        "bab_domains_visited": 280236,
+        "bab_time_seconds": 115.64783048629761,
+        "global_lower_bound": -0.28362876176834106
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5072650909423828,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.43142032623291016,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 14.168110132217407,
+        "bab_domains_visited": 4528,
+        "bab_time_seconds": 6.29477334022522,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.025779008865356445,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5271039009094238,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 8.856117486953735,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 1.4979891777038574,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.43676328659057617,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.013624906539916992,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4575963020324707,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011951684951782227,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 158
+  },
+  {
+    "config_idx": 7,
+    "description": "lr_alpha=0.5",
+    "config": {
+      "solver.alpha-crown.lr_alpha": "0.5"
+    },
+    "summary": {
+      "total_instances": 25,
+      "verified_count": 17,
+      "falsified_count": 7,
+      "timeout_count": 1,
+      "verified_rate": 0.68,
+      "mean_time_all": 10.556490716934205,
+      "mean_time_verified": 8.399921178817749,
+      "mean_time_falsified": 0.07092905044555664,
+      "total_bab_domains": 368886,
+      "alpha_crown_total_time": 68.36736965179443,
+      "alpha_crown_mean_iterations": 82.18181818181819,
+      "alpha_crown_call_count": 11,
+      "beta_crown_total_time": 69.69718909263611,
+      "beta_crown_call_count": 145,
+      "beta_crown_mean_iterations": 18.951724137931034
+    },
+    "instance_results": [
+      {
+        "index": 0,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.4039273262023926,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 1,
+        "status": "safe",
+        "total_time_seconds": 8.472161054611206,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.1519179344177246,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 2,
+        "status": "safe",
+        "total_time_seconds": 30.892719745635986,
+        "bab_domains_visited": 39712,
+        "bab_time_seconds": 24.10098695755005,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 3,
+        "status": "safe",
+        "total_time_seconds": 32.37668228149414,
+        "bab_domains_visited": 39798,
+        "bab_time_seconds": 22.030959129333496,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 4,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.624117374420166,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 5,
+        "status": "safe",
+        "total_time_seconds": 25.341211557388306,
+        "bab_domains_visited": 19996,
+        "bab_time_seconds": 16.849375247955322,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 6,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5617561340332031,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 7,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.01287221908569336,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 8,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.008938789367675781,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 9,
+        "status": "safe",
+        "total_time_seconds": 11.178916931152344,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.1305382251739502,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 10,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.6237430572509766,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 11,
+        "status": "safe",
+        "total_time_seconds": 7.451833486557007,
+        "bab_domains_visited": 128,
+        "bab_time_seconds": 0.11872744560241699,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 12,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.010968208312988281,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 13,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.40761303901672363,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 14,
+        "status": "unknown",
+        "total_time_seconds": 120.61710453033447,
+        "bab_domains_visited": 263792,
+        "bab_time_seconds": 113.73939538002014,
+        "global_lower_bound": -0.2834886312484741
+      },
+      {
+        "index": 15,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.519465446472168,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 16,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4341564178466797,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 17,
+        "status": "safe",
+        "total_time_seconds": 13.551141500473022,
+        "bab_domains_visited": 4524,
+        "bab_time_seconds": 6.411431550979614,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 18,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.02522587776184082,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 19,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.5266101360321045,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 20,
+        "status": "safe",
+        "total_time_seconds": 8.960064172744751,
+        "bab_domains_visited": 680,
+        "bab_time_seconds": 1.5411629676818848,
+        "global_lower_bound": 1.0000000116860974e-07
+      },
+      {
+        "index": 21,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.43404078483581543,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 22,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.022650480270385742,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 23,
+        "status": "safe-incomplete",
+        "total_time_seconds": 0.4424269199371338,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      },
+      {
+        "index": 24,
+        "status": "unsafe-pgd",
+        "total_time_seconds": 0.011920452117919922,
+        "bab_domains_visited": 0,
+        "bab_time_seconds": 0,
+        "global_lower_bound": null
+      }
+    ],
+    "optimization_calls_count": 156
+  }
+]
