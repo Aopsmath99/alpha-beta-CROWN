@@ -1,0 +1,44 @@
+# GCP-CROWN only: cutting planes generated before BaB, then used during BaB.
+# Requires CPLEX. Build the executable first:
+#   cd complete_verifier/cuts/CPLEX_cuts && make
+# If you don't have CPLEX, skip this config and use the BICCOS configs instead.
+model:
+  name: resnet2b
+  path: models/cifar10_resnet/resnet2b.pth
+data:
+  dataset: CIFAR
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2471, 0.2435, 0.2616]
+  start: 0
+  end: 100
+specification:
+  norm: .inf
+  epsilon: 0.00784313725490196
+attack:
+  pgd_steps: 100
+  pgd_restarts: 30
+solver:
+  batch_size: 512
+  alpha-crown:
+    iteration: 50
+    lr_alpha: 0.2
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    iteration: 20
+bab:
+  timeout: 300
+  branching:
+    method: kfsb
+    candidates: 3
+    reduceop: min
+  cut:
+    enabled: true
+    cplex_cuts: true
+    bab_cut: true
+    iteration: 200
+    bab_iteration: 50
+    lr: 0.01
+    lr_beta: 0.02
+    lr_decay: 0.9
+    number_cuts: 50

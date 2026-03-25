@@ -1,0 +1,169 @@
+{
+  "summary": {
+    "total_instances": 1,
+    "verified_count": 1,
+    "falsified_count": 0,
+    "timeout_count": 0,
+    "verified_rate": 1.0,
+    "mean_time_all": 5.917872428894043,
+    "mean_time_verified": 5.917872428894043,
+    "mean_time_falsified": 0,
+    "total_bab_domains": 16,
+    "alpha_crown_total_time": 1.8056540489196777,
+    "alpha_crown_mean_iterations": 20.0,
+    "alpha_crown_call_count": 1,
+    "beta_crown_total_time": 0.2590501308441162,
+    "beta_crown_call_count": 2,
+    "beta_crown_mean_iterations": 5.5
+  },
+  "instance_results": [
+    {
+      "index": 0,
+      "status": "safe",
+      "total_time_seconds": 5.917872428894043,
+      "bab_domains_visited": 16,
+      "bab_time_seconds": 0.7551352977752686,
+      "global_lower_bound": 1.0000000116860974e-07
+    }
+  ],
+  "optimization_calls": [
+    {
+      "type": "alpha-crown",
+      "loss_history": [
+        0.08025932312011719,
+        0.0760660171508789,
+        0.07474660873413086,
+        0.07354211807250977,
+        0.07302331924438477,
+        0.07309198379516602,
+        0.07307624816894531,
+        0.07292509078979492,
+        0.07292747497558594,
+        0.07280158996582031,
+        0.07266712188720703,
+        0.07258749008178711,
+        0.07249641418457031,
+        0.0724024772644043,
+        0.0722804069519043,
+        0.07210493087768555,
+        0.07216739654541016,
+        0.07220458984375,
+        0.07208919525146484,
+        0.07215356826782227
+      ],
+      "best_lower_history": [
+        -0.08025932312011719,
+        -0.0760660171508789,
+        -0.07474660873413086,
+        -0.07354211807250977,
+        -0.07302331924438477,
+        -0.07302331924438477,
+        -0.07302331924438477,
+        -0.07292509078979492,
+        -0.07292509078979492,
+        -0.07280158996582031,
+        -0.07266712188720703,
+        -0.07258749008178711,
+        -0.07249641418457031,
+        -0.0724024772644043,
+        -0.0722804069519043,
+        -0.07210493087768555,
+        -0.07210493087768555,
+        -0.07210493087768555,
+        -0.07208919525146484,
+        -0.07208919525146484
+      ],
+      "best_upper_history": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "iterations_completed": 20,
+      "early_stopped": false,
+      "stop_reason": "completed",
+      "final_best_lower": -0.07208919525146484,
+      "final_best_upper": null,
+      "time_seconds": 1.8056540489196777
+    },
+    {
+      "type": "beta-crown",
+      "loss_history": [
+        0.04120969772338867,
+        0.041510581970214844,
+        0.04123067855834961,
+        0.04087972640991211,
+        0.04083538055419922,
+        0.04091978073120117,
+        0.04087400436401367,
+        0.04081106185913086,
+        0.04081153869628906,
+        0.040819644927978516
+      ],
+      "best_lower_history": [
+        1.4331886768341064,
+        1.4331891536712646,
+        1.4331891536712646,
+        1.4335191249847412,
+        1.433563470840454,
+        1.433563470840454,
+        1.433563470840454,
+        1.4335877895355225,
+        1.4335877895355225,
+        1.4335877895355225
+      ],
+      "best_upper_history": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "iterations_completed": 10,
+      "early_stopped": false,
+      "stop_reason": "completed",
+      "final_best_lower": -0.04011106118559837,
+      "final_best_upper": null,
+      "time_seconds": 0.2466731071472168
+    },
+    {
+      "type": "beta-crown",
+      "loss_history": [
+        0.0
+      ],
+      "best_lower_history": [
+        0.8850870132446289
+      ],
+      "best_upper_history": [
+        null
+      ],
+      "iterations_completed": 1,
+      "early_stopped": true,
+      "stop_reason": "all_verified",
+      "final_best_lower": 0.8850870132446289,
+      "final_best_upper": null,
+      "time_seconds": 0.012377023696899414
+    }
+  ]
+}

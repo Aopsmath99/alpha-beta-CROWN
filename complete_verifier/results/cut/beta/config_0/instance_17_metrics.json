@@ -1,0 +1,169 @@
+{
+  "summary": {
+    "total_instances": 1,
+    "verified_count": 1,
+    "falsified_count": 0,
+    "timeout_count": 0,
+    "verified_rate": 1.0,
+    "mean_time_all": 6.254887819290161,
+    "mean_time_verified": 6.254887819290161,
+    "mean_time_falsified": 0,
+    "total_bab_domains": 16,
+    "alpha_crown_total_time": 2.13187313079834,
+    "alpha_crown_mean_iterations": 20.0,
+    "alpha_crown_call_count": 1,
+    "beta_crown_total_time": 0.38304638862609863,
+    "beta_crown_call_count": 2,
+    "beta_crown_mean_iterations": 5.5
+  },
+  "instance_results": [
+    {
+      "index": 0,
+      "status": "safe",
+      "total_time_seconds": 6.254887819290161,
+      "bab_domains_visited": 16,
+      "bab_time_seconds": 0.7346630096435547,
+      "global_lower_bound": 1.0000000116860974e-07
+    }
+  ],
+  "optimization_calls": [
+    {
+      "type": "alpha-crown",
+      "loss_history": [
+        -0.42275547981262207,
+        -0.44275951385498047,
+        -0.4541447162628174,
+        -0.4583916664123535,
+        -0.4590878486633301,
+        -0.4596529006958008,
+        -0.4601759910583496,
+        -0.4612100124359131,
+        -0.46224522590637207,
+        -0.4624788761138916,
+        -0.46242356300354004,
+        -0.46276116371154785,
+        -0.46316027641296387,
+        -0.4634091854095459,
+        -0.46368408203125,
+        -0.4638960361480713,
+        -0.4638690948486328,
+        -0.463970422744751,
+        -0.46413230895996094,
+        -0.46424126625061035
+      ],
+      "best_lower_history": [
+        0.42275547981262207,
+        0.44275951385498047,
+        0.4541447162628174,
+        0.4583916664123535,
+        0.4590878486633301,
+        0.4596529006958008,
+        0.4601759910583496,
+        0.4612100124359131,
+        0.46224522590637207,
+        0.4624788761138916,
+        0.4624788761138916,
+        0.46276116371154785,
+        0.46316027641296387,
+        0.4634091854095459,
+        0.46368408203125,
+        0.4638960361480713,
+        0.4638960361480713,
+        0.463970422744751,
+        0.46413230895996094,
+        0.46424126625061035
+      ],
+      "best_upper_history": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "iterations_completed": 20,
+      "early_stopped": false,
+      "stop_reason": "completed",
+      "final_best_lower": 0.46424126625061035,
+      "final_best_upper": null,
+      "time_seconds": 2.13187313079834
+    },
+    {
+      "type": "beta-crown",
+      "loss_history": [
+        0.0030698776245117188,
+        0.0028848648071289062,
+        0.002690553665161133,
+        0.0024313926696777344,
+        0.0021696090698242188,
+        0.002092599868774414,
+        0.0020668506622314453,
+        0.0020494461059570312,
+        0.0020051002502441406,
+        0.0019519329071044922
+      ],
+      "best_lower_history": [
+        2.194286346435547,
+        2.1944713592529297,
+        2.1946656703948975,
+        2.194924831390381,
+        2.1951866149902344,
+        2.195263624191284,
+        2.195289373397827,
+        2.1953067779541016,
+        2.1953511238098145,
+        2.195404291152954
+      ],
+      "best_upper_history": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "iterations_completed": 10,
+      "early_stopped": false,
+      "stop_reason": "completed",
+      "final_best_lower": -0.0012519329320639372,
+      "final_best_upper": null,
+      "time_seconds": 0.3709127902984619
+    },
+    {
+      "type": "beta-crown",
+      "loss_history": [
+        0.0
+      ],
+      "best_lower_history": [
+        1.4427852630615234
+      ],
+      "best_upper_history": [
+        null
+      ],
+      "iterations_completed": 1,
+      "early_stopped": true,
+      "stop_reason": "all_verified",
+      "final_best_lower": 1.4427852630615234,
+      "final_best_upper": null,
+      "time_seconds": 0.012133598327636719
+    }
+  ]
+}

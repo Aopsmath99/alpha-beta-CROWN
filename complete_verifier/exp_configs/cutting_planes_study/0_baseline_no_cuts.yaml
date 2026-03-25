@@ -1,0 +1,30 @@
+# Baseline: standard beta-CROWN BaB with NO cutting planes.
+# Use this as the control for all cutting plane experiments.
+general:
+  root_path: ../vnncomp2025_benchmarks/benchmarks/cifar100_2024
+  csv_name: instances.csv
+data:
+  num_outputs: 100
+  start: 0  # Subject to change.
+  end: 10
+specification:
+  norm: .inf
+  epsilon: 0.00784313725490196
+attack:
+  pgd_order: middle
+  pgd_restarts: 10
+solver:
+  batch_size: 1024
+  beta-crown:
+    lr_alpha: 0.05
+    lr_beta: 0.1
+    iteration: 5
+  alpha-crown:
+    lr_alpha: 0.25
+    iteration: 20
+bab:
+  timeout: 300
+  branching:
+    method: kfsb
+    candidates: 7
+    reduceop: max

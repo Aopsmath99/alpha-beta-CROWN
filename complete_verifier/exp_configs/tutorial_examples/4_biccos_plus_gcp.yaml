@@ -1,0 +1,59 @@
+# BICCOS + GCP-CROWN combined: CPLEX-generated cuts PLUS BICCOS inference.
+# This is the strongest cutting plane configuration.
+# Requires CPLEX installed; see config 1 for build instructions.
+model:
+  name: resnet2b
+  path: models/cifar10_resnet/resnet2b.pth
+data:
+  dataset: CIFAR
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2471, 0.2435, 0.2616]
+  start: 0
+  end: 100
+specification:
+  norm: .inf
+  epsilon: 0.00784313725490196
+attack:
+  pgd_steps: 100
+  pgd_restarts: 30
+solver:
+  batch_size: 512
+  alpha-crown:
+    iteration: 50
+    lr_alpha: 0.2
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    iteration: 20
+bab:
+  timeout: 300
+  interm_transfer: false
+  tree_traversal: breadth_first
+  branching:
+    method: kfsb
+    candidates: 3
+    reduceop: max
+  cut:
+    enabled: true
+    cplex_cuts: true
+    bab_cut: true
+    iteration: 200
+    bab_iteration: 50
+    lr: 0.01
+    lr_beta: 0.02
+    lr_decay: 0.9
+    number_cuts: 500
+    biccos:
+      enabled: true
+      auto_param: false
+      constraint_strengthening: true
+      drop_ratio: 0.5
+      max_infer_iter: 20
+      max_domain: 10000
+      heuristic: neuron_influence_score
+      multi_tree_branching:
+        enabled: true
+        restore_best_tree: true
+        keep_n_best_domains: 50
+        target_batch_size: 200
+        iterations: 3

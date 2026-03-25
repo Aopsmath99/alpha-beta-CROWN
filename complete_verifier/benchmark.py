@@ -6,17 +6,21 @@ Runs the verifier on one or more configurations, collects detailed metrics
 final bound tightness, verified/falsified/timeout counts, BaB subproblems),
 and saves results to JSON with a summary table on stdout.
 
+By default, each instance is run as a separate subprocess so the OS reclaims
+all memory between instances (prevents the monotonic RAM growth that occurs
+when CPython processes many heavy instances in a single process).
+
 Requires the ABCROWN_METRICS_PATH instrumentation in auto_LiRPA/metrics.py.
 
 Usage examples:
 
-  # Single configuration run
+  # Single configuration run (each instance isolated in its own process)
   python benchmark.py --config exp_configs/tutorial_examples/cifar_resnet_2b.yaml \\
       --output results/baseline/
 
   # Limit to 10 instances for quick testing
   python benchmark.py --config exp_configs/tutorial_examples/cifar_resnet_2b.yaml \\
-      --output results/quick/ --num-instances 100
+      --output results/quick/ --num-instances 10
 
   # Sweep over a single parameter
   python benchmark.py --config exp_configs/tutorial_examples/cifar_resnet_2b.yaml \\
@@ -28,6 +32,10 @@ Usage examples:
       --output results/grid/ --num-instances 10 \\
       --sweep "solver.alpha-crown.lr_alpha=0.01,0.1,0.5" \\
       --sweep "solver.alpha-crown.iteration=20,50,100"
+
+  # Old behaviour: all instances in one process (faster startup, but leaks RAM)
+  python benchmark.py --config exp_configs/tutorial_examples/cifar_resnet_2b.yaml \\
+      --output results/baseline/ --batch-mode
 """
 
 import argparse
@@ -117,7 +125,6 @@ def parse_sweep(sweep_str):
         v = v.strip()
         if not v:
             continue
-        # Try int, then float, then bool, then keep as string
         try:
             values.append(int(v))
         except ValueError:
@@ -136,11 +143,7 @@ def parse_sweep(sweep_str):
 
 
 def set_nested(d, key_path, value):
-    """Set a value in a nested dict using a dotted key path.
-
-    Example: set_nested(d, 'solver.alpha-crown.lr_alpha', 0.1)
-    sets d['solver']['alpha-crown']['lr_alpha'] = 0.1
-    """
+    """Set a value in a nested dict using a dotted key path."""
     keys = key_path.split('.')
     for key in keys[:-1]:
         if key not in d:
@@ -160,17 +163,206 @@ def get_nested(d, key_path, default=None):
     return d
 
 
-def run_single_config(config_path, metrics_path, python_exe, on_instance=None):
-    """Run the verifier on a single configuration.
+# ---------------------------------------------------------------------------
+#  Per-instance subprocess isolation (default mode)
+# ---------------------------------------------------------------------------
 
-    Args:
-        config_path: path to the YAML config file.
-        metrics_path: path where the MetricsCollector will dump JSON.
-        python_exe: path to the Python interpreter.
-        on_instance: callback(status_line) called when an instance completes.
+def run_instance_isolated(config, instance_idx, metrics_path, log_path,
+                          python_exe):
+    """Run a single verification instance in its own subprocess.
+
+    Creates a temporary config with data.start=instance_idx and
+    data.end=instance_idx+1, so the subprocess handles exactly one instance
+    and then exits (releasing all RAM back to the OS).
 
     Returns:
-        (returncode, metrics_dict_or_None, stdout_text)
+        (returncode, instance_metrics_dict_or_None, status_line_or_None)
+    """
+    instance_config = copy.deepcopy(config)
+    set_nested(instance_config, 'data.start', instance_idx)
+    set_nested(instance_config, 'data.end', instance_idx + 1)
+
+    config_path = metrics_path.parent / f'instance_{instance_idx}_config.yaml'
+    inst_metrics = metrics_path.parent / f'instance_{instance_idx}_metrics.json'
+
+    with open(config_path, 'w') as f:
+        yaml.dump(instance_config, f, default_flow_style=False)
+
+    if inst_metrics.exists():
+        inst_metrics.unlink()
+
+    env = os.environ.copy()
+    env['ABCROWN_METRICS_PATH'] = str(inst_metrics)
+    env['PYTHONUNBUFFERED'] = '1'
+
+    cmd = [python_exe, '-u', 'abcrown.py', '--config', str(config_path)]
+
+    status_line = None
+    with open(log_path, 'w') as log_f:
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            env=env,
+        )
+        for line in iter(process.stdout.readline, ''):
+            if not line:
+                break
+            log_f.write(line)
+            if line.strip().startswith('Result:'):
+                status_line = line.strip()
+        process.wait()
+
+    metrics = None
+    if inst_metrics.exists():
+        try:
+            with open(inst_metrics, 'r') as f:
+                metrics = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    # Clean up the per-instance config (the metrics file is kept)
+    try:
+        config_path.unlink()
+    except OSError:
+        pass
+
+    return process.returncode, metrics, status_line
+
+
+def merge_instance_metrics(all_instance_metrics):
+    """Merge per-instance metrics dicts into one combined metrics dict."""
+    merged_instance_results = []
+    merged_optimization_calls = []
+
+    for m in all_instance_metrics:
+        if m is None:
+            continue
+        merged_instance_results.extend(m.get('instance_results', []))
+        merged_optimization_calls.extend(m.get('optimization_calls', []))
+
+    if not merged_instance_results:
+        return None
+
+    times = [r['total_time_seconds'] for r in merged_instance_results]
+    verified = [
+        r for r in merged_instance_results
+        if 'safe' in r['status'] and 'unsafe' not in r['status']
+    ]
+    falsified = [
+        r for r in merged_instance_results
+        if 'unsafe' in r['status']
+    ]
+    timeout = [
+        r for r in merged_instance_results
+        if 'unknown' in r['status'] or 'timeout' in r['status']
+    ]
+
+    alpha_calls = [
+        c for c in merged_optimization_calls if c['type'] == 'alpha-crown'
+    ]
+    beta_calls = [
+        c for c in merged_optimization_calls if c['type'] == 'beta-crown'
+    ]
+
+    summary = {
+        'total_instances': len(merged_instance_results),
+        'verified_count': len(verified),
+        'falsified_count': len(falsified),
+        'timeout_count': len(timeout),
+        'verified_rate': (
+            len(verified) / len(merged_instance_results)
+            if merged_instance_results else 0
+        ),
+        'mean_time_all': sum(times) / len(times) if times else 0,
+        'mean_time_verified': (
+            sum(r['total_time_seconds'] for r in verified) / len(verified)
+            if verified else 0
+        ),
+        'mean_time_falsified': (
+            sum(r['total_time_seconds'] for r in falsified) / len(falsified)
+            if falsified else 0
+        ),
+        'total_bab_domains': sum(
+            r['bab_domains_visited'] for r in merged_instance_results
+        ),
+    }
+
+    if alpha_calls:
+        summary['alpha_crown_total_time'] = sum(
+            c['time_seconds'] for c in alpha_calls
+        )
+        summary['alpha_crown_mean_iterations'] = (
+            sum(c['iterations_completed'] for c in alpha_calls)
+            / len(alpha_calls)
+        )
+        summary['alpha_crown_call_count'] = len(alpha_calls)
+
+    if beta_calls:
+        summary['beta_crown_total_time'] = sum(
+            c['time_seconds'] for c in beta_calls
+        )
+        summary['beta_crown_call_count'] = len(beta_calls)
+        summary['beta_crown_mean_iterations'] = (
+            sum(c['iterations_completed'] for c in beta_calls)
+            / len(beta_calls)
+        )
+
+    return {
+        'summary': summary,
+        'instance_results': merged_instance_results,
+        'optimization_calls': merged_optimization_calls,
+    }
+
+
+def run_config_per_instance(config, data_start, data_end, config_dir,
+                            python_exe, pbar):
+    """Run all instances for one config, each in its own subprocess."""
+    metrics_path = config_dir / 'metrics.json'
+    all_instance_metrics = []
+    error_count = 0
+
+    for i in range(data_start, data_end):
+        log_path = config_dir / f'instance_{i}.log'
+
+        returncode, metrics, status_line = run_instance_isolated(
+            config, i, metrics_path, log_path, python_exe,
+        )
+
+        if returncode != 0:
+            error_count += 1
+
+        all_instance_metrics.append(metrics)
+
+        short = ''
+        if status_line:
+            short = status_line.replace('Result: ', '')
+            if len(short) > 30:
+                short = short[:27] + '...'
+        pbar.update(1)
+        pbar.set_postfix_str(short)
+
+    merged = merge_instance_metrics(all_instance_metrics)
+    if merged:
+        with open(metrics_path, 'w') as f:
+            json.dump(merged, f, indent=2)
+
+    return merged, error_count
+
+
+# ---------------------------------------------------------------------------
+#  Batch mode (old behaviour: all instances in one subprocess)
+# ---------------------------------------------------------------------------
+
+def run_single_config_batch(config_path, metrics_path, python_exe,
+                            on_instance=None):
+    """Run the verifier on a single configuration (all instances at once).
+
+    This is the legacy mode: one subprocess handles all instances.  Faster to
+    start up (model loaded once), but CPython never returns freed RAM to the
+    OS so memory grows monotonically across instances.
     """
     env = os.environ.copy()
     env['ABCROWN_METRICS_PATH'] = str(metrics_path)
@@ -192,14 +384,12 @@ def run_single_config(config_path, metrics_path, python_exe, on_instance=None):
         if not line:
             break
         stdout_lines.append(line)
-        # Detect per-instance completion by looking for "Result:" lines
         if line.strip().startswith('Result:') and on_instance:
             on_instance(line.strip())
 
     process.wait()
     stdout_text = ''.join(stdout_lines)
 
-    # Read the metrics JSON dumped by the instrumented code
     metrics = None
     metrics_path = Path(metrics_path)
     if metrics_path.exists():
@@ -212,17 +402,12 @@ def run_single_config(config_path, metrics_path, python_exe, on_instance=None):
     return process.returncode, metrics, stdout_text
 
 
+# ---------------------------------------------------------------------------
+#  Config variant builder
+# ---------------------------------------------------------------------------
+
 def build_config_variants(base_config, sweep_specs, num_instances=None):
-    """Build all configuration variants from base config and sweep specs.
-
-    Args:
-        base_config: dict loaded from the base YAML file.
-        sweep_specs: list of (key_path, [values]) from --sweep args.
-        num_instances: if set, override data.end.
-
-    Returns:
-        list of (config_dict, description_string) tuples.
-    """
+    """Build all configuration variants from base config and sweep specs."""
     if sweep_specs:
         sweep_keys = [s[0] for s in sweep_specs]
         sweep_values = [s[1] for s in sweep_specs]
@@ -238,7 +423,6 @@ def build_config_variants(base_config, sweep_specs, num_instances=None):
     else:
         configs = [(copy.deepcopy(base_config), 'baseline')]
 
-    # Override instance count if requested
     if num_instances is not None:
         for config, _ in configs:
             start = get_nested(config, 'data.start', 0)
@@ -247,12 +431,15 @@ def build_config_variants(base_config, sweep_specs, num_instances=None):
     return configs
 
 
+# ---------------------------------------------------------------------------
+#  Summary display
+# ---------------------------------------------------------------------------
+
 def print_comparison_table(results):
     """Print a comparison table to stdout."""
     if not results:
         return
 
-    # Define columns
     cols = [
         ('Config', 20),
         ('Verified', 8),
@@ -264,11 +451,9 @@ def print_comparison_table(results):
         ('BaB Domains', 11),
     ]
 
-    # Adjust first column width to fit descriptions
     max_desc = max(len(r['description']) for r in results)
     cols[0] = ('Config', max(cols[0][1], max_desc + 2))
 
-    # Print header
     header = ' | '.join(name.center(width) for name, width in cols)
     separator = '-+-'.join('-' * width for _, width in cols)
 
@@ -335,6 +520,10 @@ def print_single_summary(result):
     print(f'  Total domains visited: {s.get("total_bab_domains", 0)}')
 
 
+# ---------------------------------------------------------------------------
+#  Main
+# ---------------------------------------------------------------------------
+
 def main():
     parser = argparse.ArgumentParser(
         description='Alpha-beta-CROWN Benchmark Runner',
@@ -362,19 +551,22 @@ def main():
         '--python', default=sys.executable,
         help='Python interpreter to use (default: current interpreter).',
     )
+    parser.add_argument(
+        '--batch-mode', action='store_true',
+        help='Run all instances in one subprocess (faster startup but '
+             'monotonically increasing RAM usage). Default: each instance '
+             'runs in its own subprocess for memory isolation.',
+    )
     args = parser.parse_args()
 
-    # Validate config path
     config_path = Path(args.config)
     if not config_path.exists():
         print(f'ERROR: Config file not found: {config_path}')
         sys.exit(1)
 
-    # Load base config
     with open(config_path, 'r') as f:
         base_config = yaml.safe_load(f)
 
-    # Parse sweep specifications
     sweep_specs = []
     for sweep_str in args.sweep:
         try:
@@ -383,22 +575,19 @@ def main():
             print(f'ERROR: {e}')
             sys.exit(1)
 
-    # Build all configuration variants
     configs = build_config_variants(
         base_config, sweep_specs, args.num_instances,
     )
 
-    # Determine instance count for progress tracking
     sample_config = configs[0][0]
     data_start = get_nested(sample_config, 'data.start', 0)
     data_end = get_nested(sample_config, 'data.end', 100)
     instances_per_config = data_end - data_start
 
-    # Create output directory
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Print banner
+    mode_label = 'batch (shared process)' if args.batch_mode else 'isolated (per-instance process)'
     print()
     print('=' * 60)
     print('  Alpha-beta-CROWN Benchmark')
@@ -409,60 +598,70 @@ def main():
             print(f'  Sweep:            {key} = {vals}')
     print(f'  Configurations:   {len(configs)}')
     print(f'  Instances/config: {instances_per_config}')
+    print(f'  Instance mode:    {mode_label}')
     print(f'  Output directory: {output_dir}')
     print('=' * 60)
     print()
 
-    # Run each configuration
     all_results = []
     overall_start = time.time()
 
     for config_idx, (config, desc) in enumerate(configs):
         print(f'[{config_idx + 1}/{len(configs)}] {desc}')
 
-        # Create per-config output directory
         config_dir = output_dir / f'config_{config_idx}'
         config_dir.mkdir(parents=True, exist_ok=True)
 
-        # Write the config for this run
         config_path_run = config_dir / 'config.yaml'
         metrics_path = config_dir / 'metrics.json'
         with open(config_path_run, 'w') as f:
             yaml.dump(config, f, default_flow_style=False)
 
-        # Clean up old metrics file if it exists
         if metrics_path.exists():
             metrics_path.unlink()
 
-        # Run with progress bar
         pbar = make_pbar(total=instances_per_config, desc='Verifying')
-        last_status = ''
 
-        def on_instance(status_line):
-            nonlocal last_status
-            last_status = status_line
-            pbar.update(1)
-            # Show the most recent result in the progress bar
-            short = status_line.replace('Result: ', '')
-            if len(short) > 30:
-                short = short[:27] + '...'
-            pbar.set_postfix_str(short)
+        if args.batch_mode:
+            # Legacy mode: one subprocess for all instances.
+            last_status = ''
 
-        returncode, metrics, stdout = run_single_config(
-            config_path_run, metrics_path, args.python,
-            on_instance=on_instance,
-        )
-        pbar.close()
+            def on_instance(status_line):
+                nonlocal last_status
+                last_status = status_line
+                pbar.update(1)
+                short = status_line.replace('Result: ', '')
+                if len(short) > 30:
+                    short = short[:27] + '...'
+                pbar.set_postfix_str(short)
 
-        # Save stdout log
-        with open(config_dir / 'stdout.log', 'w') as f:
-            f.write(stdout)
+            returncode, metrics, stdout = run_single_config_batch(
+                config_path_run, metrics_path, args.python,
+                on_instance=on_instance,
+            )
+            pbar.close()
 
-        if returncode != 0:
-            print(f'  WARNING: Verifier exited with code {returncode}')
-            print(f'  Check {config_dir / "stdout.log"} for details.')
+            with open(config_dir / 'stdout.log', 'w') as f:
+                f.write(stdout)
 
-        # Collect results
+            if returncode != 0:
+                print(f'  WARNING: Verifier exited with code {returncode}')
+                print(f'  Check {config_dir / "stdout.log"} for details.')
+        else:
+            # Default mode: one subprocess per instance.
+            cfg_data_start = get_nested(config, 'data.start', 0)
+            cfg_data_end = get_nested(config, 'data.end', 100)
+
+            metrics, error_count = run_config_per_instance(
+                config, cfg_data_start, cfg_data_end, config_dir,
+                args.python, pbar,
+            )
+            pbar.close()
+
+            if error_count > 0:
+                print(f'  WARNING: {error_count} instance(s) exited with '
+                      f'non-zero code. Check instance logs in {config_dir}/')
+
         if metrics:
             result = {
                 'config_idx': config_idx,
@@ -479,7 +678,6 @@ def main():
             }
             all_results.append(result)
 
-            # Quick inline summary
             s = result['summary']
             print(
                 f'  => Verified: {s.get("verified_count", "?")}  '
@@ -498,13 +696,10 @@ def main():
 
         print()
 
-    # Save combined results (without the full optimization_calls to keep
-    # the summary file manageable; those are in per-config metrics.json)
     summary_path = output_dir / 'summary.json'
     with open(summary_path, 'w') as f:
         json.dump(all_results, f, indent=2)
 
-    # Print final summary
     total_time = time.time() - overall_start
     print('-' * 60)
     print(f'Benchmark completed in {total_time:.1f}s')
@@ -518,14 +713,16 @@ def main():
 
     print()
 
-    # Per-config files listing
     print('Per-configuration files:')
     for i, r in enumerate(all_results):
         d = output_dir / f'config_{i}'
         print(f'  [{i}] {r["description"]}')
         print(f'      Config:  {d / "config.yaml"}')
         print(f'      Metrics: {d / "metrics.json"}')
-        print(f'      Log:     {d / "stdout.log"}')
+        if args.batch_mode:
+            print(f'      Log:     {d / "stdout.log"}')
+        else:
+            print(f'      Logs:    {d / "instance_*.log"}')
 
     return 0 if all(not r.get('error') for r in all_results) else 1
 

@@ -14,6 +14,7 @@
 #########################################################################
 """α,β-CROWN (alpha-beta-CROWN) verifier main interface."""
 
+import gc
 import socket
 import random
 import os
@@ -382,6 +383,14 @@ class ABCROWN:
             self.logger.summarize_results(verified_status, new_idx)
             # At the end of each test instance, record attack statistics
             get_attack_stats(self.logger, new_idx)
+
+            # Free GPU memory at the end of each instance so it's available
+            # before the next instance's incomplete_verifier allocates.
+            del model_incomplete
+            model_incomplete = None
+            self.spec_handler_incomplete = None
+            gc.collect()
+            torch.cuda.empty_cache()
 
         self.logger.finish()
         return self.logger.verification_summary

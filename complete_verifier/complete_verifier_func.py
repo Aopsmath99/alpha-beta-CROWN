@@ -161,7 +161,7 @@ def complete_verifier(
         timeout=timeout,
         index=index,
     )
-    bab_ret.append([index, l, num_domains_visited, time.time() - start_time_bab])
+    bab_ret.append([index, float(l), num_domains_visited, time.time() - start_time_bab])
 
     timeout = timeout_threshold - (time.time() - start_time)
 

@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "total_instances": 1,
+    "verified_count": 1,
+    "falsified_count": 0,
+    "timeout_count": 0,
+    "verified_rate": 1.0,
+    "mean_time_all": 3.507463216781616,
+    "mean_time_verified": 3.507463216781616,
+    "mean_time_falsified": 0,
+    "total_bab_domains": 0,
+    "alpha_crown_total_time": 0.11400556564331055,
+    "alpha_crown_mean_iterations": 1.0,
+    "alpha_crown_call_count": 1
+  },
+  "instance_results": [
+    {
+      "index": 0,
+      "status": "safe-incomplete",
+      "total_time_seconds": 3.507463216781616,
+      "bab_domains_visited": 0,
+      "bab_time_seconds": 0,
+      "global_lower_bound": null
+    }
+  ],
+  "optimization_calls": [
+    {
+      "type": "alpha-crown",
+      "loss_history": [
+        0.0
+      ],
+      "best_lower_history": [
+        0.06096935272216797
+      ],
+      "best_upper_history": [
+        null
+      ],
+      "iterations_completed": 1,
+      "early_stopped": true,
+      "stop_reason": "all_verified",
+      "final_best_lower": 0.06096935272216797,
+      "final_best_upper": null,
+      "time_seconds": 0.11400556564331055
+    }
+  ]
+}

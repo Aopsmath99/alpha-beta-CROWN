@@ -1,0 +1,56 @@
+attack:
+  pgd_restarts: 30
+  pgd_steps: 100
+bab:
+  branching:
+    candidates: 3
+    method: kfsb
+    reduceop: max
+  cut:
+    bab_cut: true
+    biccos:
+      auto_param: false
+      constraint_strengthening: true
+      drop_ratio: 0.5
+      enabled: true
+      heuristic: neuron_influence_score
+      max_domain: 10000
+      max_infer_iter: 20
+      multi_tree_branching:
+        enabled: true
+        iterations: 3
+        keep_n_best_domains: 50
+        restore_best_tree: true
+        target_batch_size: 200
+    enabled: true
+    number_cuts: 75
+  interm_transfer: false
+  timeout: 300
+  tree_traversal: depth_first
+data:
+  dataset: CIFAR
+  end: 100
+  mean:
+  - 0.4914
+  - 0.4822
+  - 0.4465
+  start: 0
+  std:
+  - 0.2471
+  - 0.2435
+  - 0.2616
+model:
+  name: resnet2b
+  path: models/cifar10_resnet/resnet2b.pth
+solver:
+  alpha-crown:
+    iteration: 50
+    lr_alpha: 0.2
+  batch_size: 8
+  beta-crown:
+    iteration: 20
+    lr_alpha: 0.01
+    lr_beta: 0.05
+specification:
+  epsilon: 0.00784313725490196
+  norm: .inf

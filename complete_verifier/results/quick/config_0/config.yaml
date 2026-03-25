@@ -5,11 +5,27 @@ bab:
   branching:
     candidates: 3
     method: kfsb
-    reduceop: min
-  timeout: 120
+    reduceop: max
+  cut:
+    bab_cut: true
+    biccos:
+      auto_param: false
+      constraint_strengthening: false
+      enabled: true
+      multi_tree_branching:
+        enabled: true
+        iterations: 3
+        keep_n_best_domains: 50
+        restore_best_tree: true
+        target_batch_size: 200
+    enabled: true
+    number_cuts: 500
+  interm_transfer: false
+  timeout: 300
+  tree_traversal: breadth_first
 data:
   dataset: CIFAR
-  end: 60
+  end: 100
   mean:
   - 0.4914
   - 0.4822
@@ -24,8 +40,8 @@ model:
   path: models/cifar10_resnet/resnet2b.pth
 solver:
   alpha-crown:
-    iteration: 100
-    lr_alpha: 0.1
+    iteration: 50
+    lr_alpha: 0.2
   batch_size: 512
   beta-crown:
     iteration: 20

@@ -1,0 +1,24 @@
+{
+  "summary": {
+    "total_instances": 1,
+    "verified_count": 0,
+    "falsified_count": 1,
+    "timeout_count": 0,
+    "verified_rate": 0.0,
+    "mean_time_all": 2.637803077697754,
+    "mean_time_verified": 0,
+    "mean_time_falsified": 2.637803077697754,
+    "total_bab_domains": 0
+  },
+  "instance_results": [
+    {
+      "index": 0,
+      "status": "unsafe-pgd",
+      "total_time_seconds": 2.637803077697754,
+      "bab_domains_visited": 0,
+      "bab_time_seconds": 0,
+      "global_lower_bound": null
+    }
+  ],
+  "optimization_calls": []
+}

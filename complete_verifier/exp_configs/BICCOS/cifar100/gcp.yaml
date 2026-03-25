@@ -1,6 +1,6 @@
 general:
   csv_name: instances.csv
-  root_path: ../../vnncomp2024_benchmarks/benchmarks/cifar100
+  root_path: ../vnncomp2025_benchmarks/benchmarks/cifar100_2024
 model:
   onnx_optimization_flags: [merge_bn]
 specification:

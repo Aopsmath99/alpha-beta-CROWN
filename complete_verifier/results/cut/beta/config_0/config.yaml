@@ -1,0 +1,26 @@
+attack:
+  pgd_order: middle
+  pgd_restarts: 10
+bab:
+  branching:
+    candidates: 7
+    reduceop: max
+  interm_transfer: false
+general:
+  csv_name: instances.csv
+  root_path: ../vnncomp2025_benchmarks/benchmarks/cifar100_2024
+model:
+  onnx_optimization_flags:
+  - merge_bn
+solver:
+  alpha-crown:
+    full_conv_alpha: false
+    iteration: 20
+    lr_alpha: 0.25
+  batch_size: 128
+  beta-crown:
+    iteration: 10
+    lr_alpha: 0.1
+    lr_beta: 0.2
+specification:
+  norm: .inf
